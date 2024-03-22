@@ -1,5 +1,14 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/src/fonts/Open_Sans/OpenSans-VariableFont.ttf');
+  font-weight: 300 800;
+  font-style: normal;
+}
+
 html {
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
 :root {
@@ -28,10 +37,22 @@ body {
 .sidebar {
   background-color: var(--additional-color);
   color: var(--additional-color-font);
+  padding: 18px;
+}
+
+.sidebar-header {
+  font-size: 26px;
 }
 
 .sidebar ul {
   list-style: none;
+  padding-left: 0;
+  
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--additional-color-font);
 }
 
 .main-containter {
@@ -47,6 +68,22 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.sidebar-links {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar-link.communities {
+  margin-bottom: 3rem;
 }
 
 .sidebar svg {
