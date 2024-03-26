@@ -1,39 +1,53 @@
 @font-face {
-  font-family: 'Open Sans';
-  src: url('/src/fonts/Open_Sans/OpenSans-VariableFont.ttf');
+  font-family: "Open Sans";
+  src: url("/src/fonts/Open_Sans/OpenSans-VariableFont.ttf");
   font-weight: 300 800;
   font-style: normal;
 }
 
 html {
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
 }
 
 :root {
-  --additional-color:  #7fa99b;
+  --additional-color: #7fa99b;
   --additional-color-font: white;
   --main-color-font: black;
 
-  --card-color: rgba(255, 253, 248, 0.952);
-  --card-side-color: #fdc57b;
-  --background-color:  #f6f6f6;
-  --input-color: rgb(234, 228, 218);
+  --card-color: rgb(255, 255, 255);
+  --card-shadow: 1px 3px 6px 0 rgb(209, 209, 209);
+  --card-side-color: #edb686;
+  --card-border-radius: 6px;
+  --card-text-color: rgb(86, 85, 85);
+
+  --background-color: #f4f4f4;
+  --input-color: #e9e9e9;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: inherit;
 }
 
 body {
   display: grid;
-  height: 100vh;
   grid-template-columns: minmax(250px, 1fr) 4fr;
   background-color: var(--background-color);
   margin: 0;
   padding: 0;
   color: black;
+}
+
+body a {
+  text-decoration: none;
+  color: var(--main-color-font);
+}
+
+body a:hover {
+  text-decoration: underline;
 }
 
 /* Sidebar */
@@ -55,7 +69,6 @@ body {
 }
 
 .sidebar a {
-  text-decoration: none;
   color: var(--additional-color-font);
 }
 
@@ -85,40 +98,46 @@ body {
   fill: white;
 }
 
+.sidebar-header {
+  text-decoration: none;
+}
+
+.sidebar a.dashboard-home-link:hover {
+  text-decoration: none;
+}
+
 /* Main container */
 
 .main-containter {
   display: grid;
-  grid-template-rows: minmax(100px, 1fr) 4fr;
 }
 
 /* Header */
 
 .header-container {
   background-color: var(--card-color);
+  box-shadow: var(--card-shadow);
+
+  font-weight: 700;
+  display: grid;
+  gap: 10px;
+  padding: 10px 15px 10px 40px;
 }
 
-/* Header upper row */
+/* Header upper row, navigational container */
 
 .navigation-container {
   display: grid;
   grid-template-columns: 1fr repeat(3, auto);
-  padding: 15px;
   align-items: center;
   gap: 30px;
-}
-
-.navigation-container .user-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .search-bar-container {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: 50px;
+  margin-right: 70px;
 }
 
 .search-bar-container input {
@@ -128,16 +147,207 @@ body {
   border-radius: 13px;
   flex: 1;
   height: 30px;
+  padding: 10px;
 }
 
-.user-profile-data { 
+.user-profile-data {
   display: flex;
   align-items: center;
   gap: 15px;
-  text-decoration: none;
 }
 
 .user-profile-data .user-name {
   white-space: nowrap;
   color: var(--main-color-font);
+}
+
+/* Header lower row, user-dashboard container */
+
+.user-dashboard-container {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.personal-info-container {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 35px 35px;
+  gap: 5px 15px;
+}
+
+.personal-info-container p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.personal-info-container .user-image {
+  grid-row: 1 / 3;
+}
+
+.personal-info-container .user-name {
+  grid-row: 2;
+}
+
+.personal-info-container .greeting {
+  align-self: end;
+}
+
+.personal-info-container .person-name {
+  align-self: start;
+}
+
+.dashboard-buttons-container {
+  display: flex;
+  gap: 15px;
+  margin-right: 30px;
+}
+
+.dashboard-buttons-container button {
+  background-color: var(--additional-color);
+  color: var(--additional-color-font);
+  font-weight: 700;
+
+  outline: none;
+  border-radius: 15px;
+  padding: 8px 15px;
+  border: none;
+  width: 90px;
+}
+
+/* Main contant container */
+
+.main-content-container a:hover {
+  color: rgb(38 98 173);
+}
+
+.main-content-container {
+  display: grid;
+  grid-template-columns: 3fr minmax(300px, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 15px 25px;
+  padding: 15px;
+}
+
+.main-content-container h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.header-link {
+  font-weight: 600;
+}
+
+/* Projects section */
+
+.projects {
+  grid-row: 1 / 4;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.projects-container .project-item {
+  background-color: var(--card-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 15px;
+
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 15px;
+
+  border-left: 6px solid var(--card-side-color);
+}
+
+.project-item p {
+  margin: 4px 0 0;
+}
+
+.project-item .description {
+  color: var(--card-text-color);
+}
+
+.project-item .card-links-container {
+  grid-row: 2;
+  justify-self: right;
+  align-self: end;
+
+  display: flex;
+  gap: 10px;
+}
+
+/* Announcements section */
+
+.announcements-container {
+  background-color: var(--card-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+
+  padding: 15px;
+
+  display: grid;
+
+  font-size: 15px;
+}
+
+.announcement-item .description {
+  margin: 5px 0 0;
+  color: var(--card-text-color);
+
+  font-size: 13px;
+}
+
+.announcement-item:not(:last-child) {
+  border-bottom: 2px solid #e3e3e3;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+/* trending section */
+
+.trending {
+  grid-row: 2;
+}
+
+.trending-container {
+  background-color: var(--card-color);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-border-radius);
+
+  display: grid;
+  gap: 20px;
+  padding: 15px 15px 20px 15px;
+}
+
+.trending-container .trending-item {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-rows: auto auto;
+  gap: 0 15px;
+  align-items: start;
+}
+
+.trending-container p {
+  margin: 0;
+}
+
+.trending-item > .user-image {
+  grid-row: 1 / 3;
+}
+
+.trending-item > .login-name {
+  align-self: end;
+  font-weight: 600;
+  color: var(--main-color-font);
+}
+
+.trending-item > .project-name {
+  grid-column: 2;
+  align-self: start;
+  color: var(--card-text-color);
 }
